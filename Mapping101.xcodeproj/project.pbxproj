@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		18EF2AF8220B929D00F62A35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF2AF7220B929D00F62A35 /* AppDelegate.swift */; };
-		18EF2AFA220B929D00F62A35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF2AF9220B929D00F62A35 /* ViewController.swift */; };
+		18EF2AFA220B929D00F62A35 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF2AF9220B929D00F62A35 /* MapViewController.swift */; };
 		18EF2AFD220B929D00F62A35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EF2AFB220B929D00F62A35 /* Main.storyboard */; };
 		18EF2AFF220B929E00F62A35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EF2AFE220B929E00F62A35 /* Assets.xcassets */; };
 		18EF2B02220B929E00F62A35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EF2B00220B929E00F62A35 /* LaunchScreen.storyboard */; };
+		18EF2B0B220B92CB00F62A35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EF2B0A220B92CB00F62A35 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		18EF2AF4220B929D00F62A35 /* Mapping101.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mapping101.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EF2AF7220B929D00F62A35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18EF2AF9220B929D00F62A35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		18EF2AF9220B929D00F62A35 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		18EF2AFC220B929D00F62A35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18EF2AFE220B929E00F62A35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18EF2B01220B929E00F62A35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18EF2B03220B929E00F62A35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18EF2B0A220B92CB00F62A35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18EF2B0B220B92CB00F62A35 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				18EF2AF6220B929D00F62A35 /* Mapping101 */,
 				18EF2AF5220B929D00F62A35 /* Products */,
+				18EF2B09220B92CB00F62A35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +59,21 @@
 			isa = PBXGroup;
 			children = (
 				18EF2AF7220B929D00F62A35 /* AppDelegate.swift */,
-				18EF2AF9220B929D00F62A35 /* ViewController.swift */,
+				18EF2AF9220B929D00F62A35 /* MapViewController.swift */,
 				18EF2AFB220B929D00F62A35 /* Main.storyboard */,
 				18EF2AFE220B929E00F62A35 /* Assets.xcassets */,
 				18EF2B00220B929E00F62A35 /* LaunchScreen.storyboard */,
 				18EF2B03220B929E00F62A35 /* Info.plist */,
 			);
 			path = Mapping101;
+			sourceTree = "<group>";
+		};
+		18EF2B09220B92CB00F62A35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18EF2B0A220B92CB00F62A35 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +108,11 @@
 				TargetAttributes = {
 					18EF2AF3220B929D00F62A35 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -135,7 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EF2AFA220B929D00F62A35 /* ViewController.swift in Sources */,
+				18EF2AFA220B929D00F62A35 /* MapViewController.swift in Sources */,
 				18EF2AF8220B929D00F62A35 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
