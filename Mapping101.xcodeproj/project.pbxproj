@@ -58,11 +58,9 @@
 		18EF2AF6220B929D00F62A35 /* Mapping101 */ = {
 			isa = PBXGroup;
 			children = (
-				18EF2AF7220B929D00F62A35 /* AppDelegate.swift */,
-				18EF2AF9220B929D00F62A35 /* MapViewController.swift */,
-				18EF2AFB220B929D00F62A35 /* Main.storyboard */,
-				18EF2AFE220B929E00F62A35 /* Assets.xcassets */,
-				18EF2B00220B929E00F62A35 /* LaunchScreen.storyboard */,
+				18FBC5A322171A780006BA05 /* Controllers */,
+				18FBC5A422171A980006BA05 /* Views */,
+				18FBC5A522171AA40006BA05 /* Supporting Files */,
 				18EF2B03220B929E00F62A35 /* Info.plist */,
 			);
 			path = Mapping101;
@@ -74,6 +72,32 @@
 				18EF2B0A220B92CB00F62A35 /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		18FBC5A322171A780006BA05 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				18EF2AF9220B929D00F62A35 /* MapViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18FBC5A422171A980006BA05 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18EF2AFB220B929D00F62A35 /* Main.storyboard */,
+				18EF2B00220B929E00F62A35 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		18FBC5A522171AA40006BA05 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				18EF2AF7220B929D00F62A35 /* AppDelegate.swift */,
+				18EF2AFE220B929E00F62A35 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

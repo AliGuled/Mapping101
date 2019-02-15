@@ -19,7 +19,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
     let locationManger = CLLocationManager()
     let geoCoder = CLGeocoder()
     
-    
+    //Formatting date to short style date
     let dataFormater: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = DateFormatter.Style.short
@@ -27,29 +27,31 @@ class MapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
         return df
     }()
     
+//    Setting the delegates for location manager and mapview
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManger.delegate = self
         locationManger.requestWhenInUseAuthorization()
         mapView.delegate = self
+        
     }
-    
+//    Adding the current location marker
     @IBAction func addCurrentLocationMarker(_ sender: UIButton) {
         
         if let location = locationManger.location {
             let annotaion = MKPointAnnotation()
             annotaion.coordinate = location.coordinate
+            
             let timeStamp = dataFormater.string(from: Date())
             annotaion.title = "You were here \(timeStamp)"
             mapView.addAnnotation(annotaion)
-            
             
             geoCoder.reverseGeocodeLocation(location) { (placeMarks : [CLPlacemark]?, error: Error?) in
                 
                 if error == nil {
                     if let placeMark = placeMarks?[0] {
                         
-                        print("\(placeMark.name!) \(placeMark.locality!) \(placeMark.administrativeArea!) \(placeMark.postalCode!)")
+                        print("\(placeMark.name ?? "??1") \(placeMark.locality ?? "??") \(placeMark.administrativeArea ?? "??") \(placeMark.postalCode ?? "??")")
                         self.reverseGeocodeComplete(location: placeMark)
                         
                     }
@@ -59,20 +61,22 @@ class MapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
         }
     }
     
+    //Finding the current location string in address format
     func reverseGeocodeComplete(location: CLPlacemark) {
         
-        let locationString = "\(location.name!) \(location.locality!) \(location .administrativeArea!) \(location.postalCode!)"
+        let locationString = "\(location.name ?? "??") \(location.locality ?? "??") \(location .administrativeArea ?? "??") \(location.postalCode ?? "?? ")"
         locationText.text = locationString
         
     }
     
-    
+    //Moving the location and centering
     func moveToCurrentLocation(){
         if let location = locationManger.location {
             mapView.setCenter(location.coordinate, animated: true)
         }
     }
     
+// Asking the user perimission to access their location
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             mapView.showsUserLocation = true
@@ -85,9 +89,20 @@ class MapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
         }
     }
     
+    //Adding custom location pin
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if let location = locationManger.location {
+        if annotation is MKPointAnnotation {
+            let pinAnnotaion = MKPinAnnotationView()
+            pinAnnotaion.tintColor = UIColor.purple
+            pinAnnotaion.annotation = annotation
+            pinAnnotaion.canShowCallout = true
+            pinAnnotaion.tintColor = .purple
+            return pinAnnotaion
+        }
+        print("custom pin method")
+        
+           if let location = locationManger.location {
             
             let closeAnnotation = mapView.annotations
             
@@ -101,14 +116,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
             }
         }
     
-        if annotation is MKPinAnnotationView {
-            let pinAnnotaion = MKPinAnnotationView()
-            pinAnnotaion.tintColor = UIColor.purple
-            pinAnnotaion.annotation = annotation
-            pinAnnotaion.tintColor = .yellow
-            pinAnnotaion.canShowCallout = true
-            return pinAnnotaion
-        }
+      
         
         return nil // use default view, so user locaiton beacon isn't modified.
     }
